@@ -1,4 +1,4 @@
-#Nexus configuration with Docker:
+# Nexus configuration with Docker:
 
 Sign-in to Nexus:
   	default user:

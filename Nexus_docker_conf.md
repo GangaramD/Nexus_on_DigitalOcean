@@ -22,15 +22,13 @@ Goto Settings--->Repository--->create_repository--->docker(hosted)
 	Tick: Enable Docker V1 API:
 
 
-leave all other default 
+Leave all other default 
 
 
 Now Goto the VM or the droplet where Docker is installed
 
-create a login json file to authenticate to our nexus Repo.
-	
-	$ sudo vi /etc/docker/daemon.json  (If this file isnt present then create it)
-          Enter the Public_IP of your instamce with the Port which was opned for docker communication in the Nexus while creating the Docker Repo.
+Create a login (daemon.json) json file to authenticate to our nexus Repo.(If this file isnt present then create it)
+	Enter the Public_IP of your instamce with the Port which was opned for docker communication in the Nexus while creating the Docker Repo.
 
          $ sudo vi /etc/docker/daemon.json
 
@@ -39,25 +37,30 @@ create a login json file to authenticate to our nexus Repo.
    		  		"disable-legacy-registry":true
 			} 
 
-$ 	
+Now try to login to the nexus repo:
+
+		$ sudo docker login -u admin -p admin123 {your_nexus_IP}:8083	
 
   login successfull
 
+
 Now Lets create an Image and Push to the Nexus repo
-   $ sudo docker pull ubuntu:14.04
-   $ sudo tag ubuntu:14.04 {your_Nexus_ip_}:port/mytest:1.1
-      ex: sudo tag ubuntu:14.04 13.34.123.23:8083/mytest:1.1
-   $ sudo push {your_Nexus_ip_}:port/mytest:1.1
-      ex: sudo push 13.34.123.23:8083/mytest:1.1
+
+	$ sudo docker pull ubuntu:14.04
+   	$ sudo tag ubuntu:14.04 {your_Nexus_ip_}:port/mytest:1.1
+      		ex: sudo tag ubuntu:14.04 13.34.123.23:8083/mytest:1.1
+   	$ sudo push {your_Nexus_ip_}:port/mytest:1.1
+     		ex: sudo push 13.34.123.23:8083/mytest:1.1
 
 
 Now lets make some changes in the images and let push its 2nd version
 
-   $ sudo docker run -it --name mytest ubuntu:14.04 /bin/bash 
-      install any new package which isnt in the ubuntu ( Ex: Lets install docker in it)
-   $ sudo docker commit mytest
-   $ sudo tag mytest {your_Nexus_ip_}:port/mytest:1.1
-      ex: sudo tag mytest 13.34.123.23:8083/mytest:1.1
-   $ sudo push {your_Nexus_ip_}:port/mytest:1.1
-      ex: sudo push 13.34.123.23:8083/mytest:1.1
+   	$ sudo docker run -it --name mytest ubuntu:14.04 /bin/bash 
+Install any new package which isnt in the ubuntu ( Ex: Lets install docker in it)
+ 
+ 	$ sudo docker commit mytest
+   	$ sudo tag mytest {your_Nexus_ip_}:port/mytest:1.1
+      		ex: sudo tag mytest 13.34.123.23:8083/mytest:1.1
+   	$ sudo push {your_Nexus_ip_}:port/mytest:1.1
+      		ex: sudo push 13.34.123.23:8083/mytest:1.1
 

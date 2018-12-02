@@ -6,7 +6,7 @@
 
 # Steps:
 
-Create a User First Never use the root user for the Droplet.
+Always first create a User for the droplet, never use the root user for the Droplet.
 
 1. Create A admin user and assign Sudo permission to it:
 

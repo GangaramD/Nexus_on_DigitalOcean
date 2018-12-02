@@ -35,36 +35,39 @@ Create a User First Never use the root user for the Droplet.
             $ mv nexus-3.14.0-04 nexus
 
 4. Create a Nexus user for best practice
-             $ sudo adduser nexus    (pwd: nexus)
-             $ sudo visudo  ( Give the sudo access)
-                  nexus   ALL=(ALL)       NOPASSWD: ALL
 
-             $ sudo chown -R nexus:nexus /opt/
+      		$ sudo adduser nexus    (pwd: nexus)
+             	$ sudo visudo  ( Give the sudo access)
+                  nexus   ALL=(ALL)       NOPASSWD: ALL
+            	$ sudo chown -R nexus:nexus /opt/
 
 5. Open /opt/nexus/bin/nexus.rc file, uncomment run_as_user parameter and set it as following.
+
               $ su - nexus
               $ vi /opt/nexus/bin/nexus.rc
               $ run_as_user="nexus" (file shold have only this line)
 
 
-Now You can start the nexus by "$ ./opt/nexus/bin/nexus start"
+	Now You can start the nexus by "$ ./opt/nexus/bin/nexus start"
 
 To check if the Repo is up we can check in the VM as,
 
 		    curl http://localhost:8081
 
-				        or
+			        or
 		In browser hit to httP://{Public_IP}:8081
 
-		By default Nexus login are:
-            user: admin
-            pwd: admin123 
+By default Nexus login are:
+
+	            user: admin
+	            pwd: admin123 
 
 
 6. Add nexus as a service at boot time
-            $ vi ~/.bashrc
 
-              NEXUS_HOME=/opt/nexus
+		$ vi ~/.bashrc
+
+              		NEXUS_HOME=/opt/nexus
 
             $ sudo ln -s $NEXUS_HOME/bin/nexus /etc/init.d/nexus
             $ cd /etc/init.d

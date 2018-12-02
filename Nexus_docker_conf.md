@@ -4,7 +4,7 @@ Sign-in to Nexus:
   	default user:
     
    	user:admin
-		pwd": admin123
+	pwd": admin123
 
 Goto Settings--->Repository--->create_repository--->docker(hosted)
 
@@ -13,7 +13,7 @@ Goto Settings--->Repository--->create_repository--->docker(hosted)
 	Repository connectors:
 
 		Http:
-			Tick: 8083 ( Give an port to communicate to docker repo)
+			Tick: 8083 ( Give an port to communicate to docker daemon)
 	
 		Force Basic authentication:
 	  	

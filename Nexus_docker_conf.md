@@ -37,9 +37,12 @@ Create a login (daemon.json) json file to authenticate to our nexus Repo.(If thi
    		  		"disable-legacy-registry":true
 			} 
 
+Restart The Docker Daemon
+
 Now try to login to the nexus repo:
 
-		$ sudo docker login -u admin -p admin123 {your_nexus_IP}:8083	
+		$ sudo docker login -u admin -p admin123 {your_nexus_IP}:8083
+
 
   login successfull
 

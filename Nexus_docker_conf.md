@@ -66,4 +66,9 @@ Install any new package which isnt in the ubuntu ( Ex: Lets install docker in it
       		ex: sudo tag mytest 13.34.123.23:8083/mytest:1.1
    	$ sudo push {your_Nexus_ip_}:port/mytest:1.1
       		ex: sudo push 13.34.123.23:8083/mytest:1.1
+		
+		
+Adding a Docker user to the docker group
+
+ 	 $ sudo usermod -a -G docker $USER
 

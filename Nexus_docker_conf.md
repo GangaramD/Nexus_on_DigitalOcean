@@ -71,4 +71,6 @@ Install any new package which isnt in the ubuntu ( Ex: Lets install docker in it
 Adding a Docker user to the docker group
 
  	 $ sudo usermod -a -G docker $USER
+	 
+Re-login to the user
 
